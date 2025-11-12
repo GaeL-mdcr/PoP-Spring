@@ -1,0 +1,33 @@
+package com.ifmt.cobracaifmt5.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.ifmt.cobracaifmt5.model.Titulo;
+import com.ifmt.cobracaifmt5.repository.Titulos;
+
+@Controller
+@RequestMapping("/titulos")
+public class TituloController {
+	
+	@Autowired //anotação dependencia
+	private Titulos titulos;
+	
+	@RequestMapping("/novo")//url mapping
+	public String novo() {
+		return "CadastroTitulo";
+		
+	}
+	@RequestMapping(method=RequestMethod.POST)
+			public String salvar (Titulo titulo) {
+			titulos.save(titulo);
+			
+			return"CadastroTitulo";
+		
+	}
+	
+
+}
+	
